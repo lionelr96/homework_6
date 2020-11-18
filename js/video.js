@@ -7,6 +7,8 @@ window.addEventListener("load", function () {
 document.querySelector("#play").addEventListener("click", function () {
 	console.log("Play Video");
 	video.play();
+	volumeOutput = document.querySelector("#volume");
+	volumeOutput.innerText = video.volume * 100 + "%";
 });
 
 document.querySelector("#pause").addEventListener("click", function () {
@@ -16,13 +18,13 @@ document.querySelector("#pause").addEventListener("click", function () {
 
 document.querySelector("#slower").addEventListener("click", () => {
 	console.log("Slow down!");
-	video.playbackRate -= 0.1;
+	video.playbackRate *= 0.9;
 	console.log(video.playbackRate);
 });
 
 document.querySelector("#faster").addEventListener("click", () => {
 	console.log("Go faster!");
-	video.playbackRate += 0.1;
+	video.playbackRate /= 0.9;
 	console.log(video.playbackRate);
 });
 
@@ -59,7 +61,7 @@ document.querySelector("#volumeSlider").addEventListener("click", () => {
 	video.volume = value / 100;
 
 	volumeOutput = document.querySelector("#volume");
-	volumeOutput.innerText = video.volume * 100;
+	volumeOutput.innerText = video.volume * 100 + "%";
 });
 
 document.querySelector("#old").addEventListener("click", () => {
